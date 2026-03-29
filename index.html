@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Manha Gulf - Saudi Arabia's leading supplier of industrial rubber and hydraulic solutions">
+    <title>Manha Rubber Factory Web Project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #003D82;
+            --primary-blue: #0052CC;
+            --accent-orange: #FF6B35;
+            --light-blue: #E8F0FE;
+            --light-gray: #F5F7FA;
+            --dark-gray: #1F2937;
+            --text-gray: #6B7280;
+            --border-color: #E5E7EB;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            color: var(--dark-gray);
+            line-height: 1.6;
+            background-color: #FFFFFF;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--dark-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-blue);
+        }
+
+        .analytics-btn {
+            background: #FEF3C7;
+            color: #92400E;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-dark);
+        }
+
+        .btn-primary:hover {
+            background: #F3F4F6;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: white;
+            padding: 3rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: var(--light-blue);
+            color: var(--primary-blue);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark-gray);
+        }
+
+        .section-title .highlight {
+            color: var(--primary-blue);
+        }
+
+        .section-subtitle {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            border: 1px solid var(--border-color);
+        }
+
+        .product-card:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        .product-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-gray);
+        }
+
+        .product-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background: var(--light-gray);
+            color: var(--text-gray);
+            padding: 0.3rem 0.8rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+        }
+
+        .product-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .product-link:hover {
+            color: var(--primary-dark);
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border-color);
+            background: white;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .carousel-btn:hover {
+            background: var(--light-blue);
+            color: var(--primary-blue);
+        }
+
+        .carousel-btn.active {
+            background: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 4rem 2rem;
+            background: var(--light-gray);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            height: 200px;
+            display: flex;
+            align-items: flex-end;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        }
+
+        .service-content {
+            position: relative;
+            z-index: 1;
+            padding: 1.5rem;
+            color: white;
+            width: 100%;
+        }
+
+        .service-icon {
+            width: 30px;
+            height: 30px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        /* Industries Section */
+        .industries {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .industry-card {
+            background: var(--light-blue);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .industry-card:hover {
+            background: var(--primary-blue);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .industry-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .industry-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        /* Why Choose Section */
+        .why-choose {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .why-item {
+            text-align: center;
+        }
+
+        .why-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-gray);
+        }
+
+        .why-item p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .commitment {
+            background: var(--light-gray);
+            padding: 3rem;
+            border-radius: 1rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .commitment h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+        }
+
+        .commitment p {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-form {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark-gray);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-block {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+
+        .info-block h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+        }
+
+        .info-block p {
+            color: var(--text-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 1.5rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 1rem;
+                height: auto;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .products-grid,
+            .services-grid,
+            .industries-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+                text-align: center;
+            }
+
+            .hero h1 {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            nav ul {
+                gap: 0.5rem;
+                font-size: 0.85rem;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .stat-item h3 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">🏭 Manha Gulf</div>
+            <nav>
+                <ul>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#analytics">Analytics</a></li>
+                    <li><button class="analytics-btn">Analytics</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-badge">12+ Years of Industrial Excellence</div>
+            <h1>Complete Rubber & Hydraulic Solutions for Industrial Excellence</h1>
+            <p>Manha Gulf is Saudi Arabia's leading supplier of industrial roller and wheel coverings, polyurethane products, conveyor belts, and rubber lining solutions. We deliver comprehensive services with superior technical knowledge and proven reliability.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">Explore Products</button>
+                <button class="btn btn-secondary">Request Quote</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <h3>12+</h3>
+                <p>Years Experience</p>
+            </div>
+            <div class="stat-item">
+                <h3>6m x 1.5m</h3>
+                <p>Max Roller Capacity</p>
+            </div>
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Quality Assurance</p>
+            </div>
+            <div class="stat-item">
+                <h3>24/7</h3>
+                <p>Customer Support</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="section-container">
+            <div class="section-badge">Premium Product Solutions</div>
+            <h2 class="section-title">Our Complete <span class="highlight">Product Range</span></h2>
+            <p class="section-subtitle">Engineered excellence across four core product categories, designed to meet the most demanding industrial applications</p>
+
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">🔧</div>
+                    <div class="product-content">
+                        <div class="product-icon">🔧</div>
+                        <h3>Rubber Rollers</h3>
+                        <p>Industrial roller coverings for small to large rolls with custom finishes</p>
+                        <div class="product-tags">
+                            <span class="tag">Recovery & Re-coating</span>
+                            <span class="tag">Roller Grooving</span>
+                            <span class="tag">+2 more</span>
+                        </div>
+                        <a href="#" class="product-link">Explore Details →</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">🟠</div>
+                    <div class="product-content">
+                        <div class="product-icon">🟠</div>
+                        <h3>Polyurethane Products</h3>
+                        <p>Superior hardness, abrasion resistance, and chemical durability</p>
+                        <div class="product-tags">
+                            <span class="tag">Automotive Components</span>
+                            <span class="tag">Industrial Equipment</span>
+                            <span class="tag">+2 more</span>
+                        </div>
+                        <a href="#" class="product-link">Explore Details →</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">📦</div>
+                    <div class="product-content">
+                        <div class="product-icon">📦</div>
+                        <h3>Conveyor Belts</h3>
+                        <p>Specialized belts for extreme conditions - heat, cold, oil, and flame resistant</p>
+                        <div class="product-tags">
+                            <span class="tag">Type A-G Belts</span>
+                            <span class="tag">Custom Profiles</span>
+                            <span class="tag">+2 more</span>
+                        </div>
+                        <a href="#" class="product-link">Explore Details →</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">🛡️</div>
+                    <div class="product-content">
+                        <div class="product-icon">🛡️</div>
+                        <h3>Rubber Lining</h3>
+                        <p>Protective coatings and linings for corrosive and abrasive environments</p>
+                        <div class="product-tags">
+                            <span class="tag">Chemical Resistant</span>
+                            <span class="tag">Abrasion Protection</span>
+                            <span class="tag">+2 more</span>
+                        </div>
+                        <a href="#" class="product-link">Explore Details →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-nav">
+                <button class="carousel-btn">←</button>
+                <button class="carousel-btn">1</button>
+                <button class="carousel-btn active">2</button>
+                <button class="carousel-btn">3</button>
+                <button class="carousel-btn">4</button>
+                <button class="carousel-btn">→</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-container">
+            <h2 class="section-title">Our Comprehensive Services</h2>
+            <p class="section-subtitle">From fabrication to engineering, backed by superior technical knowledge and experience</p>
+
+            <div class="services-grid">
+                <div class="service-card" style="background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <div class="service-content">
+                        <div class="service-icon">🔄</div>
+                        <h3>Roller Recovery & Re-coating</h3>
+                    </div>
+                </div>
+                <div class="service-card" style="background-image: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <div class="service-content">
+                        <div class="service-icon">♻️</div>
+                        <h3>Re-coating of Polyurethane rollers</h3>
+                    </div>
+                </div>
+                <div class="service-card" style="background-image: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <div class="service-content">
+                        <div class="service-icon">✂️</div>
+                        <h3>Roller Grooving & Balancing</h3>
+                    </div>
+                </div>
+                <div class="service-card" style="background-image: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                    <div class="service-content">
+                        <div class="service-icon">⚖️</div>
+                        <h3>Roller Crowning & Repair</h3>
+                    </div>
+                </div>
+                <div class="service-card" style="background-image: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                    <div class="service-content">
+                        <div class="service-icon">✨</div>
+                        <h3>Chrome & Special Finishes</h3>
+                    </div>
+                </div>
+                <div class="service-card" style="background-image: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                    <div class="service-content">
+                        <div class="service-icon">🔩</div>
+                        <h3>Roller Grinding</h3>
+                    </div>
+                </div>
+                <div class="service-card" style="background-image: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                    <div class="service-content">
+                        <div class="service-icon">🏗️</div>
+                        <h3>Custom Roller Fabrication</h3>
+                    </div>
+                </div>
+                <div class="service-card" style="background-image: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);">
+                    <div class="service-content">
+                        <div class="service-icon">🛡️</div>
+                        <h3>Protective Lining & Coating</h3>
+                    </div>
+                </div>
+                <div class="service-card" style="background-image: linear-gradient(135deg, #2e2e78 0%, #662d8c 100%);">
+                    <div class="service-content">
+                        <div class="service-icon">📋</div>
+                        <h3>Rubber Sheeting & Gaskets</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section class="industries">
+        <div class="section-container">
+            <h2 class="section-title">Industries We Serve</h2>
+            <p class="section-subtitle">Trusted by leading companies across diverse sectors</p>
+
+            <div class="industries-grid">
+                <div class="industry-card">
+                    <div class="industry-icon">🚗</div>
+                    <h3>Automotive</h3>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">🏭</div>
+                    <h3>Steel & Metal Processing</h3>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">📄</div>
+                    <h3>Paper & Pulp Mills</h3>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">🪟</div>
+                    <h3>Glass Factories</h3>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">🏗️</div>
+                    <h3>Cement & Refineries</h3>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">⛏️</div>
+                    <h3>Mining & Quarries</h3>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">🍕</div>
+                    <h3>Food & Beverage</h3>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">💧</div>
+                    <h3>Water Treatment</h3>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">⚡</div>
+                    <h3>Power Generation</h3>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">🧪</div>
+                    <h3>Chemical Manufacturing</h3>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">💊</div>
+                    <h3>Pharmaceutical</h3>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">🚢</div>
+                    <h3>Shipping & Marine</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose">
+        <div class="section-container">
+            <h2 class="section-title">Why Choose Manha Gulf?</h2>
+
+            <div class="why-grid">
+                <div class="why-item">
+                    <h3>✓ Comprehensive Service</h3>
+                    <p>Complete solutions from fabrication to engineering under one roof</p>
+                </div>
+                <div class="why-item">
+                    <h3>✓ Swift Turnarounds</h3>
+                    <p>Fast production and delivery with total quality control</p>
+                </div>
+                <div class="why-item">
+                    <h3>✓ Unique Capabilities</h3>
+                    <p>Advanced machinery and technical expertise for specialized solutions</p>
+                </div>
+                <div class="why-item">
+                    <h3>✓ 24/7 Availability</h3>
+                    <p>Round-the-clock support and emergency services for critical operations</p>
+                </div>
+            </div>
+
+            <div class="commitment">
+                <h2>Our Commitment</h2>
+                <p>At Manha Gulf, we are committed to delivering the highest quality industrial solutions. With over 12 years of experience, we have built a reputation for excellence, reliability, and customer satisfaction.</p>
+                <p>Our team of expert engineers and technicians work tirelessly to ensure that every product meets the most stringent quality standards and exceeds customer expectations.</p>
+                <button class="btn btn-primary">Learn More About Us</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Have questions? We are here to help. Contact us today for more information about our products and services.</p>
+
+            <div class="contact-grid">
+                <form class="contact-form" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" placeholder="+966 569 080 824" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea placeholder="Tell us about your inquiry..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+
+                <div class="contact-info">
+                    <div class="info-block">
+                        <h3>📞 Phone</h3>
+                        <p>+966 569 080 824</p>
+                        <p>+966 570 644 951</p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Available 24/7</p>
+                    </div>
+                    <div class="info-block">
+                        <h3>✉️ Email</h3>
+                        <p>manharubberfactory@gmail.com</p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Response within 24 hours</p>
+                    </div>
+                    <div class="info-block">
+                        <h3>📍 Location</h3>
+                        <p>Al Sanabel, Jeddah</p>
+                        <p>Saudi Arabia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>About Manha</h3>
+                    <p>Saudi Arabia's leading supplier of industrial rubber and hydraulic solutions since 2012.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="#products">Rubber Rollers</a></li>
+                        <li><a href="#products">Polyurethane</a></li>
+                        <li><a href="#products">Conveyor Belts</a></li>
+                        <li><a href="#products">Rubber Lining</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#services">Roller Recovery</a></li>
+                        <li><a href="#services">Custom Fabrication</a></li>
+                        <li><a href="#services">Technical Support</a></li>
+                        <li><a href="#services">Maintenance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="tel:+966569080824">Phone: +966 569 080 824</a></li>
+                        <li><a href="tel:+966570644951">Phone: +966 570 644 951</a></li>
+                        <li><a href="mailto:manharubberfactory@gmail.com">Email: manharubberfactory@gmail.com</a></li>
+                        <li>Al Sanabel, Jeddah</li>
+                        <li>24/7 Support Available</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Manha Gulf. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you! Your message has been received. We will contact you shortly.');
+            event.target.reset();
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
